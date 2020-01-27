@@ -26,16 +26,16 @@ const cards = [
 ];
 
 /// Cards that are in play at the moment
-const cardsInPlay = [];
+var cardsInPlay = [];
 
 // Comparison to check for winning condition
 function checkForMatch () {
         //// HAVING TROUBLE HERE??????????? I am not refrencing  //
 
         if (cardsInPlay[0] === cardsInPlay[1]) {
-        console.log("You found a match!");
+        alert("You found a match!");
       } else {
-        console.log("Sorry, try again.");
+        alert("Sorry, try again.");
       }
 }
 
@@ -49,8 +49,7 @@ function flipCard () {
     //check for 2 cards
     if (cardsInPlay.length>1) {
         checkForMatch();
-        cardsInPlay.pop();
-        cardsInPlay.pop();
+        cardsInPlay = [];
     }
     
 }
@@ -66,4 +65,14 @@ function createBoard () {
     }
 }
 /// Invoce the Game
+document.querySelector('#reset').addEventListener('click',reset);
+
+function reset () {
+    for (let i=0;i<cards.length;i++) {
+        document.querySelector('#game-board img').remove();
+    }
+    cardsInPlay = [];
+    createBoard();
+    }
+
 createBoard();
